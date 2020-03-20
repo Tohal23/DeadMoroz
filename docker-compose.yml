@@ -1,0 +1,26 @@
+version: "3"
+services:
+  dead-moroz:
+    build:
+      context: .
+      dockerfile: /dead-moroz/dead-moroz-impl/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - behavior
+      - gift-factory
+    network_mode: "host"
+  behavior:
+    build:
+      context: .
+      dockerfile: /behavior/behavior-impl/Dockerfile
+    ports:
+      - "8081:8081"
+    network_mode: "host"
+  gift-factory:
+    build:
+      context: .
+      dockerfile: /gift-factory/Dockerfile
+    ports:
+      - "8082:8082"
+    network_mode: "host"
